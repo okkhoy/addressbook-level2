@@ -55,4 +55,134 @@ public class Address {
     public boolean isPrivate() {
         return isPrivate;
     }
+    
+    
+    /**
+     * Creates and maintains a field called block to store Block 
+     * information of the address
+     * @author anarayan
+     *
+     */
+    class Block {
+        private String block;
+        
+        public Block(String block) {
+            this.block = block;
+        }
+        
+        /** 
+         * Converts block information to string and 
+         * @return block in string format
+         */
+        @Override
+        public String toString(){
+            return this.block;
+        }
+
+        /**
+         * Returns block information to caller
+         */
+        public String getBlock() {
+            return this.toString();
+        }
+
+        /**
+         * Sets block information to an empty block field created earlier
+         * @param block
+         */
+        public void setBlock(String block) {
+            this.block = block;
+        }
+        
+        
+    }
+    
+    
+    /**
+     * Creates and maintains a field called street to store Street 
+     * information of the address
+     * @author anarayan
+     *
+     */
+    class Street {
+        private String street;
+        
+        public Street(String street) {
+            this.street = street;
+        }
+        
+        /** 
+         * Converts street information to string and 
+         * @return street in string format
+         */
+        @Override
+        public String toString(){
+            return this.street;
+        }
+
+        /**
+         * Returns street information to caller
+         */
+        public String getStreet() {
+            return this.toString();
+        }
+
+        /**
+         * Sets street information to an empty street field created earlier
+         * @param block
+         */
+        public void setStreet(String street) {
+            this.street = street;
+        }
+                
+    }
+    
+    
+   /** Creates and maintains a field called unit to store Unit
+    * information of the address
+    * @author anarayan
+    *
+    */
+   class Unit {
+       private String unit;
+       private String level;
+       
+       public Unit(String unit) {
+           this.setUnit(unit);;
+       }
+       
+       /** 
+        * Converts unit information to string format and returns it
+        * E.g., Level: 2, unit 14 will be converted to #02-14
+        * @return street in string format
+        */
+       @Override
+       public String toString(){
+           String unitInfo = "#" + String.format("%02d", this.unit) + "-" + this.level; 
+           return unitInfo;
+       }
+
+       /**
+        * Returns unit information to caller
+        */
+       public String getUnit() {
+           return this.toString();
+       }
+
+       /**
+        * Sets unit information to an empty street field created earlier
+        * converts a unit like #02-14 to unit = 14 and level = 2 and stores
+        * it in the respective fields
+        */
+       public void setUnit(String unit) {
+           String[] unitInfo = unit.split("-");
+           this.level = unitInfo[0].startsWith("#") ? unitInfo[0].substring(1) : unitInfo[0];
+           this.unit = unitInfo[1];
+       }
+               
+   }
+   
+   
+   
+    
 }
