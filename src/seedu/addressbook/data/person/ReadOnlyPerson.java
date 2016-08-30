@@ -53,7 +53,7 @@ public interface ReadOnlyPerson {
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-        builder.append(getAddress())
+        builder.append(getAddress().toString())
                 .append(" Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
