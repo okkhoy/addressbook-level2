@@ -23,7 +23,8 @@ public class Address {
     private boolean isPrivate;
 
     /**
-     * Validates given address.
+     * Validates given address. We mandate the address to have 4 components separated by comma.
+     * TODO: eliminate this rigidity!
      *
      * @throws IllegalValueException
      *             if given address string is invalid.
@@ -32,18 +33,44 @@ public class Address {
         
         this.isPrivate = isPrivate;
         String[] addressComponents = address.split(",");
-        
-        System.out.println("".join(", ", addressComponents));
+        boolean isMissingComponents = false;
         
         if (!isValidAddress(address)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
         
-        block = new Block(addressComponents[0]);
-        street = new Street(addressComponents[1]);
-        unit = new Unit(addressComponents[2]);
-        postalCode = new PostalCode(addressComponents[3]);
+        if ( addressComponents.length < NUM_ADDRESS_COMPONENTS) {
+            isMissingComponents = true;
+        }
+        
+        addIndividualAddressComponents(addressComponents, isMissingComponents);
+        
     }
+    
+    /**
+     * Adds individual address components. If certain components are missing, then they are set to empty string
+     * @param addressComponents given parts of the address
+     * @param isMissingComponents indicates if the address has lesser components than the format
+     */
+    private void addIndividualAddressComponents(String[] addressComponents, boolean isMissingComponents) {
+        // if components are missing, for now, just dump everything into the first field 
+        // TODO: fix the above rigidity
+        
+        if(isMissingComponents) {
+            this.block = new Block("".join(", ", addressComponents));
+//            this.street = new Street(" ");
+//            this.unit = new Unit(" ");
+//            this.postalCode = new PostalCode(" ");
+            return;
+        }
+        
+        this.block = new Block(addressComponents[0]);
+        this.street = new Street(addressComponents[1]);
+        this.unit = new Unit(addressComponents[2]);
+        this.postalCode = new PostalCode(addressComponents[3]);
+        
+    }
+    
 
     /**
      * Returns true if a given string is a valid address.
@@ -203,6 +230,11 @@ public class Address {
          * in the respective fields
          */
         public void setUnit(String unit) {
+            if (unit.equals(" ")) {
+                this.level = " ";
+                this.unit = " ";
+                return;
+            }
             String[] unitInfo = unit.split("-");
             this.level = unitInfo[0].startsWith("#") ? unitInfo[0].substring(1) : unitInfo[0];
             this.unit = unitInfo[1];
