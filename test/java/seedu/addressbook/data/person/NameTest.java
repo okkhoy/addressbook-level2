@@ -20,10 +20,10 @@ public class NameTest {
         name2 = new Name("Name two");
     }
     
-    @Test(expected = RuntimeException.class)
-    public void isSimilar_notImplemented_returnexception() {
-        name1.isSimilar(null);
-    }
+//    @Test(expected = RuntimeException.class)
+//    public void isSimilar_notImplemented_returnexception() {
+//        name1.isSimilar(null);
+//    }
     
     @Test
     public void isSimilar_nullCompare_returnsFalse() {

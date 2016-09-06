@@ -67,11 +67,14 @@ public class Name {
      * Names are same if:
      * Order of the first name and last name can be different
      * Spellings have to be the same, but can be in different cases etc.,
+     * @return 
      */
-    public void isSimilar(Optional <Name> other) {
+    public boolean isSimilar(Optional <Name> other) {
+        boolean isOtherSimilar = true;
         if (other == null) {
-            throw new RuntimeException("This method needs another argument to compare to");
+            isOtherSimilar = false;
         }
+        return isOtherSimilar;
     }
 
 }
