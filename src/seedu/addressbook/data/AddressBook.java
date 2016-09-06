@@ -149,6 +149,9 @@ public class AddressBook {
     }
     
     
+    /**
+     * Returns the list of tags modified this session appropriately formatted
+     */
     public static String getTagsModifiedThisSession() {
         StringBuilder builder = new StringBuilder();
         
@@ -159,6 +162,10 @@ public class AddressBook {
         return builder.toString();
     }
     
+    
+    /**
+     * Removes all tags added in this session.
+     */
     public static void clearTagsModified() {
         tagList.clear();
     }
