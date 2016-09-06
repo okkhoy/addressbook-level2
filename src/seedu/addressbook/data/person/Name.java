@@ -69,7 +69,9 @@ public class Name {
      * Spellings have to be the same, but can be in different cases etc.,
      */
     public void isSimilar(Optional <Name> other) {
-        
+        if (other == null) {
+            throw new RuntimeException("This method needs another argument to compare to");
+        }
     }
 
 }
