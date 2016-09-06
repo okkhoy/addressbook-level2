@@ -4,6 +4,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Represents a Person's name in the address book.
@@ -59,6 +60,16 @@ public class Name {
     @Override
     public int hashCode() {
         return fullName.hashCode();
+    }
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Names are same if:
+     * Order of the first name and last name can be different
+     * Spellings have to be the same, but can be in different cases etc.,
+     */
+    public void isSimilar(Optional <Name> other) {
+        
     }
 
 }
