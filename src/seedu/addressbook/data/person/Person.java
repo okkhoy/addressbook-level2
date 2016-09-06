@@ -16,7 +16,7 @@ public class Person implements ReadOnlyPerson {
     private Address address;
     
     private int sequenceNumber;
-    static int nextSequenceNumber;
+    static int nextSequenceNumber = 1;
 
     private final UniqueTagList tags;
     /**
