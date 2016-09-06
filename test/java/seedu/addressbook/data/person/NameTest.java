@@ -25,5 +25,10 @@ public class NameTest {
         name1.isSimilar(null);
     }
     
+    @Test
+    public void isSimilar_nullCompare_returnsFalse() {
+        assertFalse(name1.isSimilar(null));
+    }
+    
     
 }
