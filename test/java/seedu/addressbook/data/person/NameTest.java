@@ -1,6 +1,7 @@
 package seedu.addressbook.data.person;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,4 +36,8 @@ public class NameTest {
         assertFalse(name1.isSimilar(name2));
     }
     
+    @Test 
+    public void isSimilar_compareSame_returnTrue() {
+        assertTrue(name1.isSimilar(name1));
+    }
 }
