@@ -69,10 +69,12 @@ public class Name {
      * Spellings have to be the same, but can be in different cases etc.,
      * @return 
      */
-    public boolean isSimilar(Optional <Name> other) {
-        boolean isOtherSimilar = true;
-        if (other == null) {
+    public boolean isSimilar(Name name2) {
+        boolean isOtherSimilar = false;
+        if (name2 == null) {
             isOtherSimilar = false;
+        } else if (this.toString().equals(name2.toString())){
+            isOtherSimilar = true;
         }
         return isOtherSimilar;
     }
